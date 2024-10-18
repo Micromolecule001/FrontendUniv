@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Зворотній зв’язок</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <img src="src/logo.svg" alt="Логотип магазину">
+            <h1>Каталог квітів</h1>
+        </div>
+    </header>
+    
+    <main>
+        <form action="submit_feedback.php" method="POST">
+            <label for="name">Прізвище та ім’я:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">E-mail:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="age">Вік:</label>
+            <input type="number" id="age" name="age" required>
+
+            <label for="education">Освіта:</label>
+            <select id="education" name="education">
+                <option value="повна">Повна</option>
+                <option value="неповна">Неповна</option>
+                <option value="вища">Вища</option>
+                <option value="професійна">Професійна</option>
+            </select>
+
+            <label for="interests">Інтереси:</label>
+            <input type="checkbox" id="hobby" name="interests" value="хобі"> Квіти/Авто - це хобі
+            <input type="checkbox" id="pro" name="interests" value="професіонал"> Професіонал у садівництві/авто
+            <input type="checkbox" id="director" name="interests" value="керівник"> Керівник компанії з реклами
+
+            <label for="purpose">Мета зворотнього зв’язку:</label>
+            <select id="purpose" name="purpose">
+                <option value="співпраця">Співпраця</option>
+                <option value="скарга">Скарга на порушення права власності</option>
+                <option value="пропозиція">Пропозиція</option>
+                <option value="помилка">Наявність помилки</option>
+            </select>
+
+            <label for="details">Детально:</label>
+            <textarea id="details" name="details" maxlength="500" rows="5" cols="50"></textarea>
+
+            <input type="checkbox" id="consent" name="consent" required> Я погоджуюсь на обробку моїх даних.
+
+            <button type="submit">Відправити</button>
+        </form>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p class="contact-info">Адреса: вул. Квіткова, 10</p>
+            <p class="contact-info">Телефон: (123) 456-7890</p>
+        </div>
+
+        <div class="container">
+            <p><a href="#">Перейти у власний кабінет</a></p>
+            <p><a href="#">Зареєструватись</a></p>
+        </div>
+
+        <p>&copy; 2024 Магазин квітів</p>
+    </footer>
+</body>
+</html>
+
