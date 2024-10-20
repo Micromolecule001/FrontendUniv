@@ -34,9 +34,9 @@
             </select>
 
             <label for="interests">Інтереси:</label>
-            <input type="checkbox" id="hobby" name="interests" value="хобі"> Квіти/Авто - це хобі
-            <input type="checkbox" id="pro" name="interests" value="професіонал"> Професіонал у садівництві/авто
-            <input type="checkbox" id="director" name="interests" value="керівник"> Керівник компанії з реклами
+            <p class="input-line"> Квіти/Авто - це хобі <input type="checkbox" id="hobby" name="interests" value="хобі"></p>
+            <p class="input-line"> Професіонал у садівництві/авто <input type="checkbox" id="pro" name="interests" value="професіонал"></p>
+            <p class="input-line"> Керівник компанії з реклами <input type="checkbox" id="director" name="interests" value="керівник"></p>
 
             <label for="purpose">Мета зворотнього зв’язку:</label>
             <select id="purpose" name="purpose">
@@ -49,7 +49,7 @@
             <label for="details">Детально:</label>
             <textarea id="details" name="details" maxlength="500" rows="5" cols="50"></textarea>
 
-            <input type="checkbox" id="consent" name="consent" required> Я погоджуюсь на обробку моїх даних.
+            <p class="input-line"> Я погоджуюсь на обробку моїх даних. <input type="checkbox" id="consent" name="consent" required></p>
 
             <button type="submit">Відправити</button>
         </form>
