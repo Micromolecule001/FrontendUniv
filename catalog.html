@@ -13,12 +13,15 @@
             <h1>Каталог квітів</h1>
         </div>
     </header>
+
     
     <main class="main-catalog">
+        <input type="text" id="search-bar" class="searchbar" placeholder="Пошук товарів за назвою" oninput="searchProducts()">
+
         <section class="product-list">
             <ul class="catalog-list">
                 <li class="product">
-                    <h3>Троянда</h3>
+                    <h3 class="product-title">Троянда <span class="new-text" id='1'></span></h3>
                     <img src="src/rose.avif" alt="Троянда">
                     <p><i>Країна походження: Нідерланди</i></p>
                     <p>Додаткова інформація:</p>
@@ -34,7 +37,7 @@
                     </ul>
                 </li>
                 <li class="product">
-                    <h3>Лілія</h3>
+                    <h3 class="product-title" >Лілія<span class="new-text" id='0'></h3>
                     <img src="src/lily.webp" alt="Лілія">
                     <p><i>Країна походження: Франція</i></p>
                     <p>Додаткова інформація:</p>
@@ -50,7 +53,57 @@
                     </ul>
                 </li>
                 <li class="product">
-                    <h3>Орхідея</h3>
+                    <h3 class="product-title">Орхідея<span class="new-text" id='1'></span></h3>
+                    <img src="src/orchid.webp" alt="Орхідея">
+                    <p><i>Країна походження: Таїланд</i></p>
+                    <p>Додаткова інформація:</p>
+                    <ul>
+                        <li>Колір: фіолетовий</li>
+                        <li>Висота: 40 см</li>
+                        <li>Тип: епіфітна</li>
+                        <li>Ціна: 150 грн</li>
+                        <li>Сезон: цілий рік</li>
+                        <li>Аромат: ніжний</li>
+                        <li>Стійкість: до 2 тижнів</li>
+                        <li>Рекомендовано для: інтер'єрного озеленення</li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="catalog-list">
+                <li class="product">
+                    <h3 class="product-title">Троянда <span class="new-text" id='1'></span></h3>
+                    <img src="src/rose.avif" alt="Троянда">
+                    <p><i>Країна походження: Нідерланди</i></p>
+                    <p>Додаткова інформація:</p>
+                    <ul>
+                        <li>Колір: червоний</li>
+                        <li>Висота: 50 см</li>
+                        <li>Тип: кущова</li>
+                        <li>Ціна: 100 грн</li>
+                        <li>Сезон: літо</li>
+                        <li>Аромат: насичений, квітковий</li>
+                        <li>Стійкість: 7-10 днів</li>
+                        <li>Рекомендовано для: букетів та декорацій</li>
+                    </ul>
+                </li>
+                <li class="product">
+                    <h3 class="product-title" >Лілія<span class="new-text" id='0'></h3>
+                    <img src="src/lily.webp" alt="Лілія">
+                    <p><i>Країна походження: Франція</i></p>
+                    <p>Додаткова інформація:</p>
+                    <ul>
+                        <li>Колір: білий</li>
+                        <li>Висота: 60 см</li>
+                        <li>Тип: цибулинна</li>
+                        <li>Ціна: 85 грн</li>
+                        <li>Сезон: весна</li>
+                        <li>Аромат: солодкий, ніжний</li>
+                        <li>Стійкість: 5-7 днів</li>
+                        <li>Рекомендовано для: весільних букетів</li>
+                    </ul>
+                </li>
+                <li class="product">
+                    <h3 class="product-title">Орхідея<span class="new-text" id='1'></span></h3>
                     <img src="src/orchid.webp" alt="Орхідея">
                     <p><i>Країна походження: Таїланд</i></p>
                     <p>Додаткова інформація:</p>
@@ -71,6 +124,54 @@
         <button onclick="window.location.href='main.html'">Головна сторінка</button>
     </main>
 
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const catalogItems = document.querySelectorAll('.product');
+            const newMessage = "Новинка!";
+            
+            console.log("catalogItems: ", catalogItems);
+                
+            catalogItems.forEach((item) => {
+                const productTitle = item.firstElementChild;
+                const newText = item.querySelector('.new-text');
+    
+                console.log("newtext.id", newText.id)
+                let index = 0;
+
+                function typeNewText() {
+                    if (index < newMessage.length && newText.id === '1') {
+                        newText.textContent += newMessage.charAt(index);
+                        index++;
+                        setTimeout(typeNewText, 300); // Adjust typing speed here
+                    }
+                }
+
+                // Apply font-size relative to product title for each item
+                newText.style.fontSize = `calc(${window.getComputedStyle(productTitle).fontSize} * 1.2)`;
+                newText.style.color = 'red';
+
+                // Start typing effect for each item
+                typeNewText();
+            });
+        });
+
+        function searchProducts() {
+            const searchQuery = document.getElementById("search-bar").value.toLowerCase();
+            const catalogItems = document.querySelectorAll(".product");
+
+            catalogItems.forEach((item) => {
+                const productName = item.querySelector(".product-title").textContent.toLowerCase();
+                
+                // Toggle visibility based on whether the product name matches the search query
+                if (productName.includes(searchQuery)) {
+                    item.style.display = "flex";
+                } else {
+                    item.style.display = "none";
+                }
+            });
+        }
+    </script>
+    
     <footer>
         <div class="container">
             <p class="contact-info">Адреса: вул. Квіткова, 10</p>

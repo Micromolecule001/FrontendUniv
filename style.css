@@ -140,6 +140,8 @@ table th, table td {
     -moz-box-shadow: 6px 7px 0px -1px rgba(0,0,0,0.75);
     box-shadow: 6px 7px 0px -1px rgba(0,0,0,0.75);
     margin: 20px;
+    scale: 1.00;
+    transition: 1s;
 }
 
 .product:hover {
@@ -158,11 +160,18 @@ img {
 }
 
 /* Стиль для форми зворотнього зв’язку */
+
+.main-feedback {
+    display: flex;
+    justify-content: center;
+}
+
 form {
     background-color: #e0f7fa;
     padding: 20px;
     margin: 20px;
     border-radius: 5px;
+    max-width: 1000px;
 }
 
 form label {
@@ -220,5 +229,41 @@ footer div p a {
     text-decoration: none;
     margin: 10px;
     color: black;
+}
+
+
+/* lab 4 task 1*/
+
+.falling-images {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+}
+
+.falling-image {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    opacity: 0.8;
+}
+
+
+/* lab 4 task 2*/
+
+.new-text {
+    color: red;
+    font-size: 1.2em; /* 1.2 times the size of the product title */
+    font-weight: bold;
+    margin-left: 5px; /* Space between product title and "Новинка!" text */
+}
+
+/* lab 4 task 3*/
+
+.searchbar {
+    margin-top: 20px;
+    padding: 10px 50px;
 }
 

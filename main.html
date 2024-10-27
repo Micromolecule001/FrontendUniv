@@ -14,6 +14,40 @@
         </div>
     </header>
     
+    <div class="falling-images" id="falling-images"></div>
+
+    <script>
+        const catalogTitle = document.getElementById('header');
+        const fallingImagesContainer = document.getElementById('falling-images');
+        const images = ['src/flower (1).svg','src/flower (2).svg','src/flower (3).svg','src/flower (4).svg','src/flower (5).svg',]
+        const colors = ['red', 'green', 'blue', 'purple', 'grey', 'black', 'steelblue', 'orange', 'yellow'];
+        const catalogTitleHeight = 60;
+        
+        function createFallingImage() {
+            const img = document.createElement('img');
+            img.src = images[Math.floor(Math.random() * images.length)];
+            img.classList.add('falling-image');
+            img.style.left = Math.random() * window.innerWidth + 'px';
+            img.style.top = '-100px';
+            img.style.height = catalogTitleHeight + 'px';
+            img.style.fill = 'lightgrey';
+            fallingImagesContainer.appendChild(img);
+
+            let position = -100;
+            const fallInterval = setInterval(() => {
+                position += 2;
+                img.style.top = position + 'px';
+
+                if (position > window.innerHeight) {
+                    clearInterval(fallInterval);
+                    img.remove();
+                }
+            }, 20);
+        }
+
+        // Створюємо нові зображення кожні 2 секунди
+        setInterval(createFallingImage, 1000);
+    </script>
     <nav>
         <ul>
             <li><a href="main.html">Головна</a></li>

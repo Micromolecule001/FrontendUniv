@@ -14,7 +14,7 @@
         </div>
     </header>
     
-    <main>
+    <main class="main-feedback">
         <form action="submit_feedback.php" method="POST">
             <label for="name">Прізвище та ім’я:</label>
             <input type="text" id="name" name="name" required>
@@ -54,6 +54,51 @@
             <button type="submit">Відправити</button>
         </form>
     </main>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const detailsField = document.getElementById("details");
+
+            // Create tooltip element
+            const tooltip = document.createElement("div");
+            tooltip.textContent = "Ваша думка для нас важлива! Конкретизуйте мету звернення, будь ласка";
+            tooltip.style.position = "absolute";
+            tooltip.style.backgroundColor = "#f9f9f9";
+            tooltip.style.padding = "8px";
+            tooltip.style.border = "1px solid #ccc";
+            tooltip.style.borderRadius = "5px";
+            tooltip.style.boxShadow = "0px 4px 8px rgba(0, 0, 0, 0.1)";
+            tooltip.style.display = "none"; // Initially hidden
+            tooltip.style.whiteSpace = "normal";
+            tooltip.style.maxWidth = "200px";
+            tooltip.style.fontSize = "0.9rem";
+            tooltip.style.color = "#333";
+            document.body.appendChild(tooltip);
+
+            // Event listeners to show/hide tooltip and apply styles
+            detailsField.addEventListener("mouseenter", function(event) {
+                // Position tooltip to the right of the details field
+                const rect = detailsField.getBoundingClientRect();
+                console.log('rect: ', rect)
+                tooltip.style.left = `${rect.right + 10}px`;
+                tooltip.style.top = `${rect.top}px`;
+                tooltip.style.display = "block";
+
+                // Apply hover styles to details field
+                detailsField.style.backgroundColor = "#f0f8ff";
+                detailsField.style.border = "1px solid #007bff";
+                detailsField.style.boxShadow = "0px 4px 8px rgba(0, 0, 0, 0.2)";
+            });
+
+            detailsField.addEventListener("mouseleave", function() {
+                // Hide tooltip and reset styles on mouse leave
+                tooltip.style.display = "none";
+                detailsField.style.backgroundColor = "";
+                detailsField.style.border = "";
+                detailsField.style.boxShadow = "";
+            });
+        });
+    </script>
 
     <footer>
         <div class="container">
